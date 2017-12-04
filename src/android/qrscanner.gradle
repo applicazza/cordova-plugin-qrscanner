@@ -10,3 +10,12 @@ dependencies {
 android {
     buildToolsVersion '23.0.2' // Older versions may give compile errors
 }
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == "com.phonegap.plugins.barcodescanner") {
+          details.useVersion "4.25.0"
+        }
+    }
+}
